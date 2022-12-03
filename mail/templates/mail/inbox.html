@@ -1,0 +1,48 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="index">
+
+    <button class="btn btn-sm btn-outline-primary" id="compose"><i class="fa fa-edit" aria-hidden="true"></i>
+        Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="inbox"><i class="fa fa-inbox" aria-hidden="true"></i>
+        Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        Sent</button>
+    <!-- <button class="btn btn-sm btn-outline-primary" id="starred"><i class="fa fa-star" aria-hidden="true"></i>
+        Starred</button> -->
+    <button class="btn btn-sm btn-outline-primary" id="archived"><i class="fa fa-archive" aria-hidden="true"></i>
+        Archived</button>
+    <!-- <button class="btn btn-sm btn-outline-primary" id="trash"><i class="fa fa-trash" aria-hidden="true"></i>
+        Trash</button> -->
+    <hr>
+
+    <div class="body">
+        <div id="emails-view">
+        </div>
+
+        <div id="compose-view">
+            <h3 id="compose-title">New Email</h3>
+            <form id="compose-form" style="text-align: left;">
+                <div class="form-group">
+                    From: <input disabled class="form-control" value="{{ request.user.email }}">
+                </div>
+                <div class="form-group">
+                    To: <input id="compose-recipients" class="form-control" placeholder="Recipients">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="compose-subject" placeholder="Subject">
+                </div>
+                <textarea id="compose-body" name="editordata" class="form-control" rows="3" placeholder="Write a message"></textarea>
+                <br>
+                <input type="submit" class="btn btn-primary" style="float: right" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
